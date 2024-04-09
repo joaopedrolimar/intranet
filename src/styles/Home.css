@@ -1,0 +1,82 @@
+/* Home.css */
+.container {
+    margin-top: 20px;
+  }
+  
+  .calendar-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os elementos sejam exibidos em várias linhas */
+  }
+  
+  .calendar-left {
+    flex: 0 0 100%; /* Assegura que o painel com os nomes dos policiais ocupe toda a largura na parte superior */
+    padding: 10px;
+  }
+  
+  .calendar-right {
+    flex: 0 0 100%; /* O calendário ocupará toda a largura na parte inferior */
+    padding: 10px;
+  }
+  
+  .police-names {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Os nomes dos policiais serão exibidos em uma única linha */
+    flex-wrap: wrap; /* Permite que os nomes sejam exibidos em várias linhas caso não caibam em uma única linha */
+  }
+  
+  .police-name {
+    margin-right: 10px; /* Adiciona um espaçamento entre os nomes dos policiais */
+    margin-bottom: 10px; /* Reduz o espaçamento entre os nomes dos policiais */
+    font-size: 30px; /* Aumenta o tamanho dos nomes dos policiais para facilitar o toque na tela */
+  }
+  
+  .react-calendar {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
+  .react-calendar__navigation {
+    background-color: #2173A6;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .react-calendar__navigation button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+  }
+  
+  .react-calendar__month-view__weekdays {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  .react-calendar__month-view__days {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os dias sejam exibidos em várias linhas */
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+  
+  .react-calendar__tile {
+    width: calc(100% / 7);
+    padding: 10px 0;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .react-calendar__tile--now {
+    background-color: #39A7BF;
+    color: white;
+  }
+  
+  
+  

@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
 
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Missions from './pages/Missions';
+import Meetings from './pages/Meetings';
+import Leave from './pages/Leave';
+import Login from './pages/Login';
+import Home from './pages/Home';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header /> {/* Adiciona o header em todas as páginas */}
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/missions" component={Missions} />
+          <Route path="/meetings" component={Meetings} />
+          <Route path="/leave" component={Leave} />
+          <Route path="/home" component={Home} />
+        </Switch>
+        <Footer /> {/* Adiciona o footer em todas as páginas */}
+      </div>
+    </Router>
   );
 }
 
 export default App;
+
+
+
+
