@@ -9,12 +9,6 @@ const Home = () => {
   const [selectedPoliceman, setSelectedPoliceman] = useState(null);
   const [events, setEvents] = useState([]);
 
-  // Exemplo de dados para o gráfico de barras
-  const data = {
-    labels: ['Missões', 'Reuniões', 'Afastamentos'],
-    values: [10, 5, 3], // Valores correspondentes às categorias
-  };
-
   // Lista de policiais com seus respectivos nomes e cores
   const policemen = [
     { name: 'Sandro', color: '#FF5733' },
@@ -31,19 +25,18 @@ const Home = () => {
     { name: 'Paulo', color: '#FF9A33' },
   ];
 
+  const fetchEventsByUser = async (userName) => {
+    // Função para buscar os eventos do usuário na API
+    // Código omitido para simplificação
+  };
+
   const handleDayClick = (value) => {
     setDate(value);
   };
 
   const selectPoliceman = (name) => {
     setSelectedPoliceman(name);
-    // Simulando eventos para o policial selecionado
-    const selectedEvents = [
-      { date: new Date(), type: 'Missão' },
-      { date: new Date(), type: 'Reunião' },
-      { date: new Date(), type: 'Afastamento' },
-    ];
-    setEvents(selectedEvents);
+    fetchEventsByUser(name);
   };
 
   return (
@@ -74,8 +67,14 @@ const Home = () => {
           </div>
         </div>
         <div className="col-md-6">
-          <h3>Gráfico de Barras</h3>
-          <BarChart data={data} />
+          <h3>Eventos</h3>
+          <ul>
+            {events.map((event, index) => (
+              <li key={index}>
+                {event.date} - {event.type}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
@@ -83,3 +82,4 @@ const Home = () => {
 };
 
 export default Home;
+
