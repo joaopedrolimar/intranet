@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import BarChart from './BarChart'; // Corrigir o caminho de importação do componente do gráfico de barras
+
 import '../styles/Home.css'; // Importar o estilo da página Home
 
 const Home = () => {

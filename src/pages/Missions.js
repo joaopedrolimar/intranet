@@ -1,46 +1,43 @@
-import React, { useState } from 'react';
-import AddMissionForm from '../components/AddMissionForm'; // Importe o componente AddMissionForm
+import React, { useState, useEffect } from 'react';
 
-const Missions = () => {
+function Missions() {
   const [missions, setMissions] = useState([]);
 
-  // Função para adicionar a nova missão à lista de missões
-  const addMission = (newMission) => {
-    setMissions([...missions, newMission]);
-  };
+  useEffect(() => {
+    // Aqui fazemos a chamada para buscar as missões do PHP
+    fetch('../database/getMissions.php') // Supondo que você criou um arquivo PHP separado para buscar as missões
+      .then(response => response.json())
+      .then(data => setMissions(data))
+      .catch(error => console.error('Error fetching missions:', error));
+  }, []);
 
   return (
     <div>
-      <h2>Missions</h2>
-      {/* Passa a função addMission para o componente AddMissionForm */}
-      <AddMissionForm onAddMission={addMission} />
-      <hr />
-      <h3>Existing Missions</h3>
-      {/* Tabela de missões */}
-      <table className="table">
-        <thead>
-          <tr>
-            <th>ORD</th>
-            <th>Period</th>
-            <th>Motivation</th>
-            <th>Participants</th>
-            <th>Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          {missions.map((mission, index) => (
-            <tr key={index}>
-              <td>{mission.ORD}</td>
-              <td>{mission.period}</td>
-              <td>{mission.motivation}</td>
-              <td>{mission.participants}</td>
-              <td>{mission.role}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <h2>Missões</h2>
+    <h3>Adicionar Nova Missão</h3>
+    <form method="post" action="../database/addMission.php">
+        <label htmlFor="ord">ORD:</label>
+        <input type="text" id="ord" name="ord" required /><br />
+
+        <label htmlFor="periodo_inicio">Período Início:</label>
+        <input type="date" id="periodo_inicio" name="periodo_inicio" required /><br />
+
+        <label htmlFor="periodo_fim">Período Fim:</label>
+        <input type="date" id="periodo_fim" name="periodo_fim" required /><br />
+
+        <label htmlFor="motivacao">Motivação:</label>
+        <textarea id="motivacao" name="motivacao"></textarea><br />
+
+        <label htmlFor="participantes">Participantes:</label>
+        <input type="text" id="participantes" name="participantes" /><br />
+
+        <label htmlFor="funcao">Função:</label>
+        <input type="text" id="funcao" name="funcao" /><br />
+
+        <button type="submit">Adicionar Missão</button>
+    </form>
+</div>
   );
-};
+}
 
 export default Missions;
